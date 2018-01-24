@@ -42,6 +42,7 @@ public class CastService {
         if (castDao.findOne(member.getId()) == null){
             return;
         }
+
         castDao.save(member);
     }
 

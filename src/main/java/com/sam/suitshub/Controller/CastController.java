@@ -4,6 +4,7 @@ import com.sam.suitshub.Entity.CastMember;
 import com.sam.suitshub.Service.CastService;
 import javassist.expr.Cast;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/cast")
 public class CastController {
 
@@ -31,7 +33,7 @@ public class CastController {
     public void deleteStudentById(@PathVariable("id") Long id ){
         castService.removeMemberById(id);
     }
-
+    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateCastMember(@RequestBody CastMember castMember ){
         castService.updateMember(castMember);
